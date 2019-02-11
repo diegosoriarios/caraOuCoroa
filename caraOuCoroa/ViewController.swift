@@ -17,7 +17,11 @@ class ViewController: UIViewController {
         let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(sender:)))
         upSwipe.direction = .up
         
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        label.textAlignment = .center
         view.addGestureRecognizer(upSwipe)
     }
 
@@ -26,9 +30,9 @@ class ViewController: UIViewController {
             switch sender.direction {
                 case .up:
                     if random() {
-                        label.text = "Cara"
+                        label.text = "😶"
                     }else{
-                        label.text = "Coroa"
+                        label.text = "👑"
                     }
                     break
                 default:
@@ -38,6 +42,8 @@ class ViewController: UIViewController {
     }
     
     func random() -> Bool {
+        label.text = ""
+        sleep(1)
         let stayOrGo = Bool.random()
         return stayOrGo
     }
